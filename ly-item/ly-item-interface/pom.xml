@@ -11,5 +11,11 @@
 
     <artifactId>ly-item-interface</artifactId>
 
-
+   <dependencies>
+       <dependency>
+           <groupId>org.projectlombok</groupId>
+           <artifactId>lombok</artifactId>
+           <version>1.16.20</version>
+       </dependency>
+   </dependencies>
 </project>
