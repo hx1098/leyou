@@ -14,6 +14,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public enum ExceptionEnum {
+    /**无效的文件类型*/
+    FILE_TYPE_NOT_ERROR(500,"无效的文件类型"),
+    /**文件上传失败*/
+    UPLOAD_ERROR(500,"文件上传失败！"),
     /**品牌商品关系表保存失败*/
     CATEGORY_BRAND_SAVE_ERROR(500,"品牌商品关系表保存失败"),
     /**品牌保存失败*/
