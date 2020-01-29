@@ -3,6 +3,7 @@ package com.leyou.item.service;
 import com.leyou.common.enums.ExceptionEnum;
 import com.leyou.common.exception.LyExcetion;
 import com.leyou.item.mapper.CategoryMapper;
+import com.leyouo.item.pojo.Brand;
 import com.leyouo.item.pojo.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,5 +35,15 @@ public class CategoryService {
              throw new LyExcetion(ExceptionEnum.CATEGORY_NOT_FOND);
         }
         return select;
+    }
+
+    /**
+     * 根据品牌查询商品分类
+     * @param bid
+     * @return
+     */
+    public List<Category> queryBrndByBid(Long bid) {
+        List<Category> list = categoryMapper.queryBrndBycid(bid);
+        return  list;
     }
 }

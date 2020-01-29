@@ -11,6 +11,7 @@ import javax.persistence.Table;
  * author:hanxiao
  * Date:2019/12/12
  * Time:9:27
+ * 商品类别id
  */
 @Table(name = "tb_category")
 @Data

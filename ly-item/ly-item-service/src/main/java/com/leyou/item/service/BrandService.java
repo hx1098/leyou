@@ -65,13 +65,10 @@ public class BrandService {
     public void saveBrand(Brand brand, List<Long> cids) {
         //新增品牌
         brand.setId(null);
-        System.err.println("0000000000000000000000000000000000000");
-        System.err.println(brand);
         int count = brandMapper.insert(brand);
         if (count != 1){
             throw  new LyExcetion(ExceptionEnum.BRAND_SAVE_ERROR);
         }
-        System.err.println(brand);
         //新增中间表
         for(Long cid : cids){
             brandMapper.insertCategoryBrand(cid,brand.getId());
@@ -80,4 +77,6 @@ public class BrandService {
             }
         }
     }
+
+
 }

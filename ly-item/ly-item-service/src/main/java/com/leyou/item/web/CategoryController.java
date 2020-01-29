@@ -1,6 +1,7 @@
 package com.leyou.item.web;
 
 import com.leyou.item.service.CategoryService;
+import com.leyouo.item.pojo.Brand;
 import com.leyouo.item.pojo.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -30,5 +31,15 @@ public class CategoryController {
     @GetMapping(value = "list")
     public ResponseEntity<List<Category>> qureyCategoryListByPid(@RequestParam("pid")Long pid){
         return ResponseEntity.ok(categoryService.qureyCategoryListByPid(pid));
+    }
+
+    /**
+     * 根据品牌查询商品分类
+     * @param bid
+     * @return
+     */
+    @GetMapping("bid/{bid}")
+    public  ResponseEntity<List<Category>> queryCateGoryByBid(@PathVariable("bid")Long bid){
+        return ResponseEntity.ok(categoryService.queryBrndByBid(bid));
     }
 }

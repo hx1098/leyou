@@ -3,7 +3,6 @@ package com.leyou.item.web;
 import com.leyou.common.vo.PageResult;
 import com.leyou.item.service.BrandService;
 import com.leyouo.item.pojo.Brand;
-import com.netflix.discovery.converters.Auto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -57,4 +56,8 @@ public class BrandController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
 
     }
+
+
+
+
 }
