@@ -4,6 +4,7 @@ import com.leyou.item.service.CategoryService;
 import com.leyouo.item.pojo.Brand;
 import com.leyouo.item.pojo.Category;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,7 +30,7 @@ public class CategoryController {
      * @return
      */
     @GetMapping(value = "list")
-    public ResponseEntity<List<Category>> qureyCategoryListByPid(@RequestParam("pid")Long pid){
+    public ResponseEntity<List<Category>> qureyCategoryListByPid(@RequestParam(value = "pid",defaultValue = "0")Long pid){
         return ResponseEntity.ok(categoryService.qureyCategoryListByPid(pid));
     }
 
@@ -42,4 +43,13 @@ public class CategoryController {
     public  ResponseEntity<List<Category>> queryCateGoryByBid(@PathVariable("bid")Long bid){
         return ResponseEntity.ok(categoryService.queryBrndByBid(bid));
     }
+
+
+    @PostMapping
+    public  ResponseEntity<Void> saveBrand(Category category){
+       /* categoryService.savecategory(category);*/
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+
+    }
+
 }

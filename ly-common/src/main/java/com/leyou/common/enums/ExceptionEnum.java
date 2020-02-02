@@ -26,8 +26,12 @@ public enum ExceptionEnum {
     PRICE_CANNOT_BE_NULL(400,"价格不能为空！"),
     /**商品分类没有查到*/
     CATEGORY_NOT_FOND(404,"商品分类没有查到！"),
+    /**商品分类保存失败*/
+    CATEGORY_SAVE_ERROR(404,"商品分类保存失败！"),
     /**品牌分类没有查到*/
     BRAND_NOT_FOND(404,"品牌分类没有查到！"),
+    /**规格组没有查到*/
+    SPEC_GROUP_NOT_FOND(404,"规格组没有查到！"),
     ;
     private int code;
     private String msg;

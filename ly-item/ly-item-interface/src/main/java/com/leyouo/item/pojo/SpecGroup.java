@@ -9,22 +9,19 @@ import javax.persistence.Table;
 /**
  * Created with IDEA
  * author:hanxiao
- * Date:2019/12/12
- * Time:9:27
- * 商品类别id
+ * Date:2020/2/1
+ * Time:15:38
+ * 规格组数据表
  */
-@Table(name = "tb_category")
+@Table(name = "tb_spec_group")
 @Data
-public class Category {
+public class SpecGroup {
+
     @Id
     @KeySql(useGeneratedKeys = true)  //允许JDBC支持自动生成主键，需要驱动兼容
-    private  Long id;
-    /**类别id*/
+    private Long id;
+    /**商品分类id，一个分类下有多个规格组*/
+    private Long cid;
+    /**规格组的名称*/
     private String name;
-    /**父级id*/
-    private Long parentId;
-    /**是否是父级id*/
-    private Boolean isParent;
-    /**排序*/
-    private Integer sort;
 }

@@ -3,13 +3,11 @@ package com.leyou.item.service;
 import com.leyou.common.enums.ExceptionEnum;
 import com.leyou.common.exception.LyExcetion;
 import com.leyou.item.mapper.CategoryMapper;
-import com.leyouo.item.pojo.Brand;
 import com.leyouo.item.pojo.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -45,5 +43,18 @@ public class CategoryService {
     public List<Category> queryBrndByBid(Long bid) {
         List<Category> list = categoryMapper.queryBrndBycid(bid);
         return  list;
+    }
+
+    /**
+     * 保存商品分类
+     * @param category
+     */
+    public void saveCategory(Category category) {
+        categoryMapper.insert(category);
+        category.setId(null);
+        int count = categoryMapper.insert(category);
+        if (count != 1){
+            throw  new LyExcetion(ExceptionEnum.CATEGORY_SAVE_ERROR);
+        }
     }
 }
