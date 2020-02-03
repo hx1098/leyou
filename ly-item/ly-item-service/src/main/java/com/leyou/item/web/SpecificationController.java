@@ -5,6 +5,7 @@ import com.leyouo.item.pojo.SpecGroup;
 import com.leyouo.item.pojo.SpecParam;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -76,12 +77,17 @@ public class SpecificationController {
 
     /**
      * 根据组id查询参数
-     * @param gid
+     * @param gid 组id
+     * @param cid 类型id
+     * @param searching 是否是搜索字段
      * @return
      */
     @GetMapping("params")
-    public  ResponseEntity<List<SpecParam>> queryParamByGid(@RequestParam("gid")Long gid){
-        return ResponseEntity.ok(specificationService.queryParamByGid(gid));
+    public  ResponseEntity<List<SpecParam>> queryParamByList(
+            @RequestParam(value = "gid",required = false)Long gid,
+            @RequestParam(value = "cid",required = false)Long cid,
+            @RequestParam(value = "searching",required = false)Boolean searching){
+        return ResponseEntity.ok(specificationService.queryParamList(gid,cid,searching));
     }
 
 

@@ -52,7 +52,7 @@ public class SpecificationService {
         specGroupMapper.deleteByPrimaryKey(id);
     }
 
-    public List<SpecParam> queryParamByGid(Long gid) {
+   /* public List<SpecParam> queryParamByGid(Long gid) {
         SpecParam specParam = new SpecParam();
         specParam.setGroupId(gid);
         List<SpecParam> list = specParamMapper.select(specParam);
@@ -60,7 +60,7 @@ public class SpecificationService {
             throw new LyExcetion(ExceptionEnum.SPEC_PARAMS_NOT_FOND);
         }
         return list;
-    }
+    }*/
 
     public void addParam(SpecParam specParam) {
         System.err.println(specParam);
@@ -73,5 +73,17 @@ public class SpecificationService {
 
     public void delParam(Long id) {
         specParamMapper.deleteByPrimaryKey(id);
+    }
+
+    public List<SpecParam> queryParamList(Long gid, Long cid, Boolean searching) {
+        SpecParam specParam = new SpecParam();
+        specParam.setGroupId(gid);
+        specParam.setCid(cid);
+        specParam.setSearching(searching);
+        List<SpecParam> list = specParamMapper.select(specParam);
+        if (CollectionUtils.isEmpty(list)){
+            throw new LyExcetion(ExceptionEnum.SPEC_PARAMS_NOT_FOND);
+        }
+        return list;
     }
 }

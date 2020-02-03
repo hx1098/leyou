@@ -57,4 +57,12 @@ public class CategoryService {
             throw  new LyExcetion(ExceptionEnum.CATEGORY_SAVE_ERROR);
         }
     }
+
+    public List<Category> queryByIds(List<Long> ids){
+        List list = categoryMapper.selectByIdList(ids);
+        if(CollectionUtils.isEmpty(list)){
+            throw new LyExcetion(ExceptionEnum.CATEGORY_NOT_FOND);
+        }
+        return list;
+    }
 }

@@ -34,6 +34,8 @@ public enum ExceptionEnum {
     SPEC_GROUP_NOT_FOND(404,"规格组没有查到！"),
     /**规格参数没有查到*/
     SPEC_PARAMS_NOT_FOND(404,"规格参数没有查到！"),
+    /**商品没有查到*/
+    GOODS_NOT_FOND(404,"商品没有查到！"),
     ;
     private int code;
     private String msg;
