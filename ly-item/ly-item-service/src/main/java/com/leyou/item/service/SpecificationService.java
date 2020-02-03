@@ -3,7 +3,9 @@ package com.leyou.item.service;
 import com.leyou.common.enums.ExceptionEnum;
 import com.leyou.common.exception.LyExcetion;
 import com.leyou.item.mapper.SpecGroupMapper;
+import com.leyou.item.mapper.SpecParamMapper;
 import com.leyouo.item.pojo.SpecGroup;
+import com.leyouo.item.pojo.SpecParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -15,12 +17,17 @@ import java.util.List;
  * author:hanxiao
  * Date:2020/2/1
  * Time:15:45
+ * 规格组处理类
+ * 规格参数处理类
  */
 @Service
 public class SpecificationService {
 
     @Autowired
     private SpecGroupMapper specGroupMapper;
+
+    @Autowired
+    private SpecParamMapper specParamMapper;
 
     public List<SpecGroup> queryGroupByCid(Long cid) {
         SpecGroup group = new SpecGroup();
@@ -43,5 +50,28 @@ public class SpecificationService {
 
     public void delSpec(String id) {
         specGroupMapper.deleteByPrimaryKey(id);
+    }
+
+    public List<SpecParam> queryParamByGid(Long gid) {
+        SpecParam specParam = new SpecParam();
+        specParam.setGroupId(gid);
+        List<SpecParam> list = specParamMapper.select(specParam);
+        if (CollectionUtils.isEmpty(list)){
+            throw new LyExcetion(ExceptionEnum.SPEC_PARAMS_NOT_FOND);
+        }
+        return list;
+    }
+
+    public void addParam(SpecParam specParam) {
+        System.err.println(specParam);
+        specParamMapper.insert(specParam);
+    }
+
+    public void updParam(SpecParam specParam) {
+        specParamMapper.updateByPrimaryKey(specParam);
+    }
+
+    public void delParam(Long id) {
+        specParamMapper.deleteByPrimaryKey(id);
     }
 }

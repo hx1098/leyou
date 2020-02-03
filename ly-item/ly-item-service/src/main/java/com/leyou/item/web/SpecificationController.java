@@ -2,6 +2,7 @@ package com.leyou.item.web;
 
 import com.leyou.item.service.SpecificationService;
 import com.leyouo.item.pojo.SpecGroup;
+import com.leyouo.item.pojo.SpecParam;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,6 +23,7 @@ public class SpecificationController {
 
     @Autowired
     private SpecificationService specificationService;
+
 
     /**
      * 根据分类id查询规格组
@@ -71,4 +73,34 @@ public class SpecificationController {
         specificationService.delSpec(id);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
+
+    /**
+     * 根据组id查询参数
+     * @param gid
+     * @return
+     */
+    @GetMapping("params")
+    public  ResponseEntity<List<SpecParam>> queryParamByGid(@RequestParam("gid")Long gid){
+        return ResponseEntity.ok(specificationService.queryParamByGid(gid));
+    }
+
+
+    @PostMapping("param")
+    public ResponseEntity<Void> addParam(@RequestBody SpecParam specParam){
+        specificationService.addParam(specParam);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @PutMapping("param")
+    public ResponseEntity<Void> updParam(@RequestBody SpecParam specParam){
+        specificationService.updParam(specParam);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("param/{id}")
+    public ResponseEntity<Void> delParam(@PathVariable("id")Long id){
+        specificationService.delParam(id);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
 }
