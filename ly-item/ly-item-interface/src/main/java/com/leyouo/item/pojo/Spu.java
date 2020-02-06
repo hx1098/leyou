@@ -5,6 +5,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created with IDEA
@@ -42,8 +43,19 @@ public class Spu {
     @JsonIgnore
     private Date lastUpdateTime;
 
+    /**category规格名称*/
     @Transient
     private String cname;
+    /**品牌名称*/
     @Transient
     private String bname;
+
+    /**spuDetail表数据*/
+    @Transient
+    private SpuDetail spuDetail;
+    /**sku表数据*/
+    @Transient
+    private List<Sku> skus;
+
+
 }
