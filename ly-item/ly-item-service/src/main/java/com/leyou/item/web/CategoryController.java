@@ -49,7 +49,16 @@ public class CategoryController {
     public  ResponseEntity<Void> saveBrand(Category category){
        /* categoryService.savecategory(category);*/
         return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
 
+    /**
+     * 根据ids查询商品分类
+     * @param ids
+     * @return
+     */
+    @GetMapping("list/ids")
+    public ResponseEntity<List<Category>> queryCategoryByIds(@RequestParam("ids")List<Long> ids){
+       return ResponseEntity.ok(categoryService.queryByIds(ids));
     }
 
 }
