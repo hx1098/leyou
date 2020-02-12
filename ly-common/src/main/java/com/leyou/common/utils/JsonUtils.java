@@ -23,6 +23,11 @@ public class JsonUtils {
 
     private static final Logger logger = LoggerFactory.getLogger(JsonUtils.class);
 
+    /**
+     * 将obj转化为json格式
+     * @param obj
+     * @return String
+     */
     @Nullable
     public static String serialize(Object obj) {
         if (obj == null) {
