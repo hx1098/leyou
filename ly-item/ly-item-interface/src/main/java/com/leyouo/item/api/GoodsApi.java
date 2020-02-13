@@ -33,7 +33,7 @@ public interface GoodsApi {
     List<Sku> querySkuListById(@RequestParam("id")Long spuId);
 
     /**
-     * 商品查询
+     * 商品分页查询
      * @param page 页码
      * @param rows 一页的数量
      * @param saleable 是否上下架
@@ -47,4 +47,13 @@ public interface GoodsApi {
             @RequestParam(value = "saleable",required = false)Boolean saleable,//可以不传此值
             @RequestParam(value = "key",defaultValue = "false")String key
     );
+
+    /**
+     * 根据spu的id查询spu
+     * @param id
+     * @return
+     */
+    @GetMapping("spu/{id}")
+    Spu querySpuById(@PathVariable("id") Long id);
+
 }

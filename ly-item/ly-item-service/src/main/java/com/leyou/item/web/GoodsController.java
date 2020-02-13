@@ -87,4 +87,14 @@ public class GoodsController {
         return  ResponseEntity.status(HttpStatus.NO_CONTENT).body("Created Success");
     }
 
+
+    /**
+     * 根据id查询spu数据
+     * @param id
+     * @return
+     */
+    @GetMapping("spu/{id}")
+    public ResponseEntity<Spu> querySpuById(@PathVariable("id")Long id){
+        return  ResponseEntity.ok(goodsService.querySpuBySpuId(id));
+    }
 }

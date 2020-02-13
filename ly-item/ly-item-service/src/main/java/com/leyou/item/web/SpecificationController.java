@@ -109,4 +109,14 @@ public class SpecificationController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
+    /**
+     * 根据cid查询规格组，以及组内参数
+     * @param cid
+     * @return
+     */
+    @GetMapping("group")
+    public ResponseEntity<List<SpecGroup>> queryListByCid(@RequestParam("cid")Long cid){
+        return  ResponseEntity.ok(specificationService.queryListByCid(cid));
+    }
+
 }
