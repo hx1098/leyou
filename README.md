@@ -15,8 +15,22 @@ http://image.leyou.com/group1/M00/00/00/wKgGgV4wLPeALKjcAALR_p80MmE433.jpg
 http://image.leyou.com/images/6/6/1524297371644.jpg
 
 
+###ly-item 接口服务：
+  192.168.99.100：8081
+  
+  
+###ly-gateway 网关服务：
+  192.168.99.100：10010  
 
 
-
-
+###ly-search 搜索服务：
+  192.168.99.100：8083  
+  
+  
+###ly-gateway 服务治理：
+  192.168.99.100：10086   
+  
+    
+###ly-page 门户页面
+  192.168.99.100：8084  
 
