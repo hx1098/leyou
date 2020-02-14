@@ -7,6 +7,20 @@ spring:
     url: jdbc:mysql://localhost:3306/leyou
     username: root
     password: root
+  rabbitmq:
+    host: 192.168.6.129
+    username: leyou
+    password: leyou
+    virtual-host: /leyou
+    template: #amqp模板
+      exchange: leyou.item.exchange  #交换机名称
+      retry:
+        enabled: true #重试
+        initial-interval: 10000ms #初始化的重试周期
+        max-interval: 30000ms # 最大重试周期
+        multiplier: 2 #重试周期乘以二
+    publisher-confirms: true  #生产者确认
+
 eureka:
   client:
     service-url:

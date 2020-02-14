@@ -72,6 +72,9 @@ public class PageService {
         context.setVariables(loadModel(spuId));
         //生成输出流
         File file = new File("E:\\ziji\\leyou2\\upload",spuId + ".html");
+        if (file.exists()){//如果存在的话，就先删除
+            file.delete();
+        }
         try( PrintWriter write = new PrintWriter(file)) {
             //生成HTml
             templateEngine.process("item", context,write);
@@ -82,4 +85,14 @@ public class PageService {
 
     }
 
+    /**
+     * 此处一windows为例，静态化后的页面需上传到nginx下
+     * @param spuId
+     */
+    public void deleteHtml(Long spuId) {
+        File file = new File("E:\\ziji\\leyou2\\upload",spuId + ".html");
+        if (file.exists()){//如果存在的话，就先删除
+            file.delete();
+        }
+    }
 }

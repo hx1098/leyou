@@ -224,4 +224,25 @@ public class SearchService {
 
         return new PageResult<>(total, totalPages, goodsList);
     }
+
+    /**
+     * 根据spuId更新创建索引
+     * @param spuId
+     */
+    public void createOrUpdateIndex(Long spuId) {
+        //查询spu
+        Spu spu = goodsClient.querySpuById(spuId);
+        //构建goods
+        Goods goods = buildGoods(spu);
+        //存入索引库看
+        goodsRepository.save(goods);
+    }
+
+    /**
+     * 根据spuID删除索引
+     * @param spuId
+     */
+    public void deleteIndex(Long spuId) {
+        goodsRepository.deleteById(spuId);
+    }
 }
