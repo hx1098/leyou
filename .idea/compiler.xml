@@ -6,20 +6,20 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="ly-upload" />
+        <module name="ly-search" />
         <module name="ly-common" />
         <module name="lyregistry" />
-        <module name="ly-gateway" />
+        <module name="ly-upload" />
         <module name="ly-registry" />
         <module name="ly-item-interface" />
-        <module name="ly-search" />
+        <module name="ly-gateway" />
+        <module name="ly-sms" />
         <module name="ly-item-service" />
         <module name="ly-page" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="leyou-portal" target="1.8" />
-      <module name="leyou2" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -32,6 +32,7 @@
       <module name="ly-page" options="-parameters" />
       <module name="ly-registry" options="-parameters" />
       <module name="ly-search" options="-parameters" />
+      <module name="ly-sms" options="-parameters" />
       <module name="ly-upload" options="-parameters" />
     </option>
   </component>

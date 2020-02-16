@@ -14,6 +14,7 @@ http://image.leyou.com/group1/M00/00/00/wKgGgV4wLPeALKjcAALR_p80MmE433.jpg
 ####商品的图片浏览：
 http://image.leyou.com/images/6/6/1524297371644.jpg
 
+MQ虚拟机： 192.168.6.129：15672
 
 ###ly-item 接口服务：
   192.168.99.100：8081

@@ -2,6 +2,7 @@ package com.leyou.search.mq;
 
 import com.leyou.search.service.SearchService;
 import com.leyouo.item.pojo.SpuDetail;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.amqp.core.ExchangeTypes;
 import org.springframework.amqp.rabbit.annotation.Exchange;
 import org.springframework.amqp.rabbit.annotation.Queue;
@@ -49,7 +50,6 @@ public class ItemListener {
         }
         //不为空 处理消息（对索引库进行新增或修改）
         searchService.deleteIndex(spuId);
-
     }
 
 }
