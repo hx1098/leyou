@@ -10,11 +10,14 @@ import com.aliyuncs.profile.DefaultProfile;
 import com.aliyuncs.profile.IClientProfile;
 import com.leyou.sms.config.SmsProperties;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author hx   <br>
@@ -57,9 +60,11 @@ public class SmsUtils {
         //根据当前时间和上次发短信的时间对比，如果小于一分钟不进行发送，实现限流的效果
         //读取redis中的发短信的时间
         String lastTime = redisTemplate.opsForValue().get(key);
-        if(System.currentTimeMillis() - Long.valueOf(lastTime) < SMS_MIN_INTERVAL_MILLIS){
-            log.error("[短信服务] 发送短信频率过高，被阻止！phoneNumber:{}",phoneNumber);
-            return  null;
+        if(StringUtils.isNotBlank(lastTime)){
+            if(System.currentTimeMillis() - Long.valueOf(lastTime) < SMS_MIN_INTERVAL_MILLIS){
+                log.error("[短信服务] 发送短信频率过高，被阻止！phoneNumber:{}",phoneNumber);
+                return  null;
+            }
         }
         try {
             //可自助调整超时时间
@@ -96,7 +101,7 @@ public class SmsUtils {
                 log.info("[短信服务] 发送短信失败！phoneNumber:{},原因｛｝",phoneNumber,sendSmsResponse.getMessage());
             }
             //发送成功以后写入Redis，
-            redisTemplate.opsForValue().set(key,String.valueOf(System.currentTimeMillis()));
+            redisTemplate.opsForValue().set(key,String.valueOf(System.currentTimeMillis()),1, TimeUnit.MINUTES);
 
             return sendSmsResponse;
         }catch (Exception e){

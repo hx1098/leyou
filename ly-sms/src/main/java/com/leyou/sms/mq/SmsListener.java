@@ -1,6 +1,5 @@
 package com.leyou.sms.mq;
 
-import com.aliyuncs.exceptions.ClientException;
 import com.leyou.common.utils.JsonUtils;
 import com.leyou.sms.config.SmsProperties;
 import com.leyou.sms.utils.SmsUtils;
@@ -57,7 +56,7 @@ public class SmsListener {
        smsUtils.sendSms(phone,prop.getSignName(), prop.getVerifyCodeTemplate(), JsonUtils.serialize(msg));
 
         //发送短信日志
-        log.error("[短信服务]，发送短信验证码，手机号：｛｝",phone);
+        log.info("[短信服务]，发送短信验证码，手机号：{}",phone);
     }
 
 

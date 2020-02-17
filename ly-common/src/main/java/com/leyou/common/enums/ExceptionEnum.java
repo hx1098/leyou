@@ -48,7 +48,10 @@ public enum ExceptionEnum {
     GOODS_ID_NOT_FOND(404,"商品id不能为空！"),
     /**商品库存为空*/
     GOODS_STOCK_NOT_FOND(404,"商品库存为空！"),
-
+    /**用户查询参数有误*/
+    INVALID_USER_DATA_TYPE(400,"用户查询参数有误！"),
+    /**验证码校验失败*/
+    INVALID_VERIFY_CODE(400,"验证码校验失败！" ),
     ;
     private int code;
     private String msg;
