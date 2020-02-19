@@ -52,6 +52,8 @@ public enum ExceptionEnum {
     INVALID_USER_DATA_TYPE(400,"用户查询参数有误！"),
     /**验证码校验失败*/
     INVALID_VERIFY_CODE(400,"验证码校验失败！" ),
+    /***/
+    UN_AUTHORIZED(403,"未授权！" ),
     ;
     private int code;
     private String msg;

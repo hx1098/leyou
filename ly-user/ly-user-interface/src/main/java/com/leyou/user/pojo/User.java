@@ -1,6 +1,7 @@
 package com.leyou.user.pojo;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
@@ -30,8 +31,8 @@ public class User {
     @Length(min = 4, max = 32, message = "用户名长度必须在4~32位之间")
     private String username;// 用户名
 
+    @JsonProperty(access = JsonProperty.Access.AUTO)
     @Length(min = 4, max = 32, message = "密码长度必须在4~32位之间")
-    @JsonIgnore
     private String password;// 密码
 
     @Pattern(regexp = "^1([38][0-9]|4[579]|5[0-3,5-9]|6[6]|7[0135678]|9[89])\\d{8}$", message = "手机号码格式有误！")

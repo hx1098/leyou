@@ -63,7 +63,7 @@ public class UserController {
      */
     @ApiOperation(value = "注册")
     @PostMapping("register")
-    public ResponseEntity<Void> register(@Valid @RequestBody User user, BindingResult result, @RequestParam("code") String code) {
+    public ResponseEntity<Void> register(@RequestBody User user, BindingResult result, @RequestParam("code") String code) {
         if(result.hasErrors()){//BindingResult 如果有错抛出异常继续执行
             throw new RuntimeException(result.getFieldErrors()
                     .stream().map(e -> e.getDefaultMessage()).collect(Collectors.joining("|")));

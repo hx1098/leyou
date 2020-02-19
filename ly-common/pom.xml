@@ -54,6 +54,10 @@
             <artifactId>mapper-base</artifactId>
             <version>1.0.4</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
     </dependencies>
 
 

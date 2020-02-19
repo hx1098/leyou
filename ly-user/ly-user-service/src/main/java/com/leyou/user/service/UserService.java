@@ -138,6 +138,6 @@ public class UserService {
         if(!user1.getPassword().equals((CodecUtils.md5Hex(password,user1.getSalt())))){
            return  null;
         }
-        return user;
+        return user1;
     }
 }
