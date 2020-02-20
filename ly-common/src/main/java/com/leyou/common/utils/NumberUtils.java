@@ -30,6 +30,25 @@ public class NumberUtils {
         }
         return str.matches("^\\d+$");
     }
+    public static double toDouble(String s){
+        if(s == null){
+            return 0;
+        }
+        if(!isDigit(s)){
+            return 0;
+        }
+        return Double.valueOf(s);
+    }
+
+    public static BigDecimal toDecimal(String s){
+        if(s == null){
+            return new BigDecimal(0);
+        }
+        if(!isDigit(s)){
+            return new BigDecimal(0);
+        }
+        return new BigDecimal(s);
+    }
 
     /**
      * 将一个小数精确到指定位数

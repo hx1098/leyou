@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -34,5 +33,36 @@ public class CategoryService {
              throw new LyExcetion(ExceptionEnum.CATEGORY_NOT_FOND);
         }
         return select;
+    }
+
+    /**
+     * 根据品牌查询商品分类
+     * @param bid
+     * @return
+     */
+    public List<Category> queryBrndByBid(Long bid) {
+        List<Category> list = categoryMapper.queryBrndBycid(bid);
+        return  list;
+    }
+
+    /**
+     * 保存商品分类
+     * @param category
+     */
+    public void saveCategory(Category category) {
+        categoryMapper.insert(category);
+        category.setId(null);
+        int count = categoryMapper.insert(category);
+        if (count != 1){
+            throw  new LyExcetion(ExceptionEnum.CATEGORY_SAVE_ERROR);
+        }
+    }
+
+    public List<Category> queryByIds(List<Long> ids){
+        List list = categoryMapper.selectByIdList(ids);
+        if(CollectionUtils.isEmpty(list)){
+            throw new LyExcetion(ExceptionEnum.CATEGORY_NOT_FOND);
+        }
+        return list;
     }
 }

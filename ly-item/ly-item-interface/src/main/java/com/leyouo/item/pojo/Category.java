@@ -11,6 +11,7 @@ import javax.persistence.Table;
  * author:hanxiao
  * Date:2019/12/12
  * Time:9:27
+ * 商品类别id
  */
 @Table(name = "tb_category")
 @Data
@@ -23,7 +24,7 @@ public class Category {
     /**父级id*/
     private Long parentId;
     /**是否是父级id*/
-    private boolean isParent;
+    private Boolean isParent;
     /**排序*/
     private Integer sort;
 }

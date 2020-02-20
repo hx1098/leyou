@@ -3,7 +3,6 @@ package com.leyou.item.web;
 import com.leyou.common.vo.PageResult;
 import com.leyou.item.service.BrandService;
 import com.leyouo.item.pojo.Brand;
-import com.netflix.discovery.converters.Auto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -57,4 +56,21 @@ public class BrandController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
 
     }
+
+    @GetMapping("/cid/{cid}")
+    public ResponseEntity<List<Brand>> queryBrandByCid(@PathVariable("cid")Long cid){
+        return ResponseEntity.ok(brandService.queryBrandByCid(cid));
+    }
+
+    /**
+     * 根据id查询品牌
+     * @param id
+     * @return
+     */
+    @GetMapping("{id}")
+    public ResponseEntity<Brand> queryBrandById(@PathVariable("id")Long id){
+        return ResponseEntity.ok(brandService.queryById(id));
+    }
+
+
 }
