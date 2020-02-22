@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.PublicKey;
 import java.util.List;
 
 /**
@@ -96,5 +97,19 @@ public class GoodsController {
     @GetMapping("spu/{id}")
     public ResponseEntity<Spu> querySpuById(@PathVariable("id")Long id){
         return  ResponseEntity.ok(goodsService.querySpuBySpuId(id));
+    }
+
+    @GetMapping("sku/list/ids")
+    public ResponseEntity<List<Sku>> querySkuByIds(@RequestParam("ids") List<Long> ids){
+       return ResponseEntity.ok(goodsService.querySkuByIds(ids));
+    }
+
+    @GetMapping("sku/{skuId}")
+    public ResponseEntity<Sku> querySkuById(@PathVariable("skuId") Long skuId){
+        Sku sku = goodsService.querySkuById(skuId);
+        if (sku == null){
+            return  ResponseEntity.notFound().build();
+        }
+        return  ResponseEntity.ok(sku);
     }
 }

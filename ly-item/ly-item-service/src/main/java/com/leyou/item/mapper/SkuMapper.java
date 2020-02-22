@@ -1,5 +1,6 @@
 package com.leyou.item.mapper;
 
+import com.leyou.common.mapper.BaseMapper;
 import com.leyouo.item.pojo.Sku;
 import tk.mybatis.mapper.common.Mapper;
 
@@ -10,5 +11,5 @@ import tk.mybatis.mapper.common.Mapper;
  * Time:22:17
  * sku表
  */
-public interface SkuMapper extends Mapper<Sku> {
+public interface SkuMapper extends BaseMapper<Sku> {
 }

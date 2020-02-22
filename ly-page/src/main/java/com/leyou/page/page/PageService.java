@@ -62,6 +62,8 @@ public class PageService {
         model.put("brand", brand);
         model.put("categories", categories);
         model.put("specs", specs);
+
+        //createHtml(spuId);
         return  model;
     }
 

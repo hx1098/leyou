@@ -9,6 +9,7 @@ import com.leyou.item.mapper.SkuMapper;
 import com.leyou.item.mapper.SpuDetailMapper;
 import com.leyou.item.mapper.SpuMapper;
 import com.leyou.item.mapper.StockMapper;
+import com.leyouo.item.api.GoodsApi;
 import com.leyouo.item.pojo.*;
 import com.netflix.discovery.converters.Auto;
 import org.apache.commons.lang.StringUtils;
@@ -225,5 +226,17 @@ public class GoodsService {
         //查询detail
         spu.setSpuDetail(queryDetailById(id));
         return  spu;
+    }
+
+    public List<Sku> querySkuByIds(List<Long> ids) {
+        List<Sku> skuList = skuMapper.selectByIdList(ids);
+        if (CollectionUtils.isEmpty(skuList)){
+            throw new LyExcetion(ExceptionEnum.GOODS_SKU_NOT_FOND);
+        }
+        return skuList;
+    }
+
+    public Sku querySkuById(Long skuId) {
+        return skuMapper.selectByPrimaryKey(skuId);
     }
 }

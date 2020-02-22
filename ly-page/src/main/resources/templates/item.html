@@ -653,14 +653,8 @@
                 // 判断是否登录
                 ly.http.get("/auth/verify").then(() => {
                     // 已登录
-                    ly.http.post("/cart", {
-                        skuId: this.sku.id,
-                        title: this.sku.title,
-                        image: this.images[0],
-                        price: this.sku.price,
-                        num: this.num,
-                        ownSpec: JSON.stringify(this.ownSpec)
-                    }).then(() => {
+					let cart = {skuId: this.sku.id, num: this.num};
+                    ly.http.post("/cart", cart,{'ContentType':'application/json'}).then(() => {
                         // 跳转到购物车列表页
                         window.location.href = "http://www.leyou.com/cart.html";
                     }).catch(() => {
