@@ -8,6 +8,9 @@
 192.168.6.129 image.leyou.com
 127.0.0.1 localhost
 
+netstat -aon|findstr 8080
+
+
 ###ly-upload 图片服务：
 ####fastdfs图片上传与下载浏览：
 http://image.leyou.com/group1/M00/00/00/wKgGgV4wLPeALKjcAALR_p80MmE433.jpg
@@ -38,6 +41,13 @@ MQ虚拟机： 192.168.6.129：15672
   
 ###ly-sms 短信服务
   192.168.99.100：8086 
+  
+###ly -user 用户中心
+   192.168.99.100：8085
+    
+###ly-auth 鉴权中心
+   192.168.99.100：8087
 
-
+###ly-cart 购物车中心
+   192.168.99.100：8088
 

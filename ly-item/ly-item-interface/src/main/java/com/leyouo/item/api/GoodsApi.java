@@ -1,5 +1,6 @@
 package com.leyouo.item.api;
 
+import com.leyou.common.dto.CartDTO;
 import com.leyou.common.vo.PageResult;
 import com.leyouo.item.pojo.Sku;
 import com.leyouo.item.pojo.Spu;
@@ -64,5 +65,11 @@ public interface GoodsApi {
      */
     @GetMapping("sku/{skuId}")
     Sku querySkuById(@PathVariable("skuId") Long skuId);
+
+    @GetMapping("/sku/list/ids")
+    List<Sku> querySkuByIds(@RequestParam("ids") List<Long> ids);
+
+    @PostMapping("stock/decrease")
+    void decreaseStock(@RequestBody List<CartDTO> cartDTOS);
 
 }

@@ -54,6 +54,15 @@ public enum ExceptionEnum {
     INVALID_VERIFY_CODE(400,"验证码校验失败！" ),
     /***/
     UN_AUTHORIZED(403,"未授权！" ),
+    CREATE_ORDER_ERROR(500,"创建订单失败！" ),
+    STOCK_NOT_ENOUGH(400,"库存不足！" ),
+    ORDER_NOT_FOUND(404,"订单不存在！" ),
+    ORDER_DETAIL_NOT_FOUNT(404,"订单详情不存在！" ),
+    ORDER_STATUS_NOT_FOUND(404,"订单状态不存在！" ),
+    WX_PAY_ORDER_FAIL(500,"微信下单失败！" ),
+    ORDER_STATUS_ERROE(500,"订单状态异常！" ),
+    INVALID_ORDER_PARAM(400,"订单参数异常！" ),
+    UPDATE_ORDER_STATUS_ERROR(400,"订单状态更新失败！" );
     ;
     private int code;
     private String msg;
